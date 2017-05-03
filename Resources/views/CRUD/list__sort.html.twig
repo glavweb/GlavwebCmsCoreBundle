@@ -1,0 +1,33 @@
+{% extends 'SonataAdminBundle:CRUD:list_string.html.twig' %}
+
+{% block field %}
+    {% if admin.isGranted('EDIT', object) and admin.hasRoute('edit') %}
+        {% set current_position = currentObjectPosition(object) %}
+        {% set last_position    = lastPosition(object) %}
+
+        {% if current_position < last_position %}
+            <a class="btn btn-position pjax" href="{{ admin.generateObjectUrl('move', object, {'position': 'bottom'}) }}" title="{{ 'move_to_bottom'|trans }}">
+                <span class="fa fa-angle-double-down"></span>
+            </a>
+        {% endif %}
+
+        {% if current_position < last_position %}
+            <a class="btn btn-position pjax" href="{{ admin.generateObjectUrl('move', object, {'position': 'down'}) }}" title="{{ 'move_down'|trans }}">
+                <span class="fa fa-angle-down"></span>
+            </a>
+        {% endif %}
+
+        {% if current_position > 0 %}
+            <a class="btn btn-position pjax" href="{{ admin.generateObjectUrl('move', object, {'position': 'up'}) }}" title="{{ 'move_up'|trans }}">
+                <span class="fa fa-angle-up"></span>
+            </a>
+        {% endif %}
+
+        {% if current_position > 0 %}
+            <a class="btn btn-position pjax" href="{{ admin.generateObjectUrl('move', object, {'position': 'top'}) }}" title="{{ 'move_to_top'|trans }}">
+                <span class="fa fa-angle-double-up"></span>
+            </a>
+        {% endif %}
+
+    {% endif %}
+{% endblock %}
