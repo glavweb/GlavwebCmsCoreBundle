@@ -433,7 +433,7 @@
 {% block side_bar_after_nav %}
     <div class="frontend-auth-wrapper">
         <div class="frontend-auth small">
-            <a href="{{ path('frontend_auth') }}" target="_blank">Авторизоваться на сайте</a>
+            <a href="{{ path('frontend_auth') }}" target="_blank">{{ 'login_to_website'|trans() }}</a>
         </div>
     </div>
 {% endblock %}
